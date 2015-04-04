@@ -1,4 +1,4 @@
-package dapsr.treesofdelhi;
+package dapsr.treesofdelhi.Tree;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,14 +10,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import dapsr.treesofdelhi.Adapter.RecyclerViewAdapter;
+import dapsr.treesofdelhi.R;
+import dapsr.treesofdelhi.Adapter.RecyclerItemClickListner;
 
 
-public class MainActivity extends ActionBarActivity implements RecyclerItemClickListner.OnItemClickListener{
+
+/**
+ * Created by rajanmaurya on 30/4/15.
+ */
+public class MainActivity extends ActionBarActivity implements RecyclerItemClickListner.OnItemClickListener {
 
     private Toolbar toolbar;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager ;
-    protected CustomAdapter mAdapter;
+    protected RecyclerViewAdapter mAdapter;
     protected String[] mDataset;
     private static final int SPAN_COUNT = 2;
     private int icon [] = {R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract };
@@ -102,7 +109,7 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
         mRecyclerView.scrollToPosition(scrollPosition);
 
         // specify an adapter (see also next example)
-        mAdapter = new CustomAdapter(mDataset , icon,context);
+        mAdapter = new RecyclerViewAdapter(mDataset , icon,context);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 

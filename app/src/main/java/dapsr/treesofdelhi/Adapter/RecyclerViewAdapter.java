@@ -1,4 +1,4 @@
-package dapsr.treesofdelhi;
+package dapsr.treesofdelhi.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import dapsr.treesofdelhi.R;
+
 /**
- * Provide views to RecyclerView with data from mDataSet.
+ * Created by rajanmaurya on 30/4/15.
  */
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
 
     private String[] mDataSet;
@@ -54,7 +56,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      * @param icon
      * @param context
      */
-    public CustomAdapter(String[] dataSet, int[] icon, Context context) {
+    public RecyclerViewAdapter(String[] dataSet, int[] icon, Context context) {
         mDataSet = dataSet;
         icons = icon;
         this.con = context;
