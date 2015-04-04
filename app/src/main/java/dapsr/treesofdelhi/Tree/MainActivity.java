@@ -1,6 +1,8 @@
 package dapsr.treesofdelhi.Tree;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,10 +12,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import dapsr.treesofdelhi.Adapter.RecyclerItemClickListner;
 import dapsr.treesofdelhi.Adapter.RecyclerViewAdapter;
 import dapsr.treesofdelhi.R;
-import dapsr.treesofdelhi.Adapter.RecyclerItemClickListner;
-
+import dapsr.treesofdelhi.ScrollView.SlidingUpScrollViewActivity;
 
 
 /**
@@ -27,13 +30,15 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
     protected RecyclerViewAdapter mAdapter;
     protected String[] mDataset;
     private static final int SPAN_COUNT = 2;
-    private int icon [] = {R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract,R.drawable.ic_abstract };
+    private int icon [] = {R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage };
 
     @Override
     public void onItemClick(View childView, int position) {
 
+        Intent intent = new Intent(this,SlidingUpScrollViewActivity.class);
+        startActivity(intent);
 
-            Toast.makeText(this,"Item Number " + position,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Item Number " + position,Toast.LENGTH_SHORT).show();
 
 
     }
@@ -78,6 +83,8 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
+        mRecyclerView.addItemDecoration(new SpacesItemDecoration(5));
+
         /*
         *
         * RecyclerView Item Click Event
@@ -86,7 +93,7 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListner(this, this));
 
 
-       // mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(true);
 
         /*
         *
@@ -100,7 +107,7 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
         * // SPAN_COUNT is the number of column in grid view
         *
         * */
-       // mLayoutManager = new LinearLayoutManager(this);
+        // mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager = new GridLayoutManager(this,SPAN_COUNT);
         mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -148,5 +155,48 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
             mDataset[i] = "Tree Number " + i;
         }
     }
+
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+        private int space;
+
+        public SpacesItemDecoration(int space) {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view,
+                                   RecyclerView parent, RecyclerView.State state) {
+            outRect.left = space;
+            outRect.right = space;
+            outRect.bottom = space;
+
+            // Add top margin only for the first item to avoid double space between items
+            if(parent.getChildPosition(view) == 0){
+                outRect.top = space;
+                outRect.right = 0;
+            }
+
+            if(parent.getChildPosition(view) == 1){
+                outRect.top = space;
+            }
+
+            if(parent.getChildPosition(view) == 2){
+                outRect.right = 0;
+            }
+            if(parent.getChildPosition(view) == 4){
+                outRect.right = 0;
+            }
+            if(parent.getChildPosition(view) == 6){
+                outRect.right = 0;
+            }
+            if(parent.getChildPosition(view) == 8){
+                outRect.right = 0;
+            }
+
+
+
+        }
+    }
+
 
 }

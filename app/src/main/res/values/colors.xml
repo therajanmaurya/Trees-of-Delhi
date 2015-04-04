@@ -12,6 +12,10 @@
     <color name="pink_pressed">#ec407a</color>
     <color name="randshabhsgd">#805677fc</color>
     <color name="half_black">#808080</color>
+    <color name="accent">#eeff41</color>
+    <color name="accentLight">#F4FF81</color>
+    <color name="primary">#009688</color>
+    <color name="primaryDark">#00796b</color>
 
 
 </resources>

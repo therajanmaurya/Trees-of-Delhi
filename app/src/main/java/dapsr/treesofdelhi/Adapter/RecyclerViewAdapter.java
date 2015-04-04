@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import dapsr.treesofdelhi.R;
 
@@ -26,7 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
-        private final TextView textView;
+       // private final TextView textView;
 
 
         public ViewHolder(View v) {
@@ -34,7 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
             imageView = (ImageView) v.findViewById(R.id.image);
-            textView  = (TextView) v.findViewById(R.id.textView2);
+           // textView  = (TextView) v.findViewById(R.id.textView2);
 
         }
 
@@ -42,9 +41,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             return imageView;
         }
 
-        public TextView getTextView(){
+        /*public TextView getTextView(){
             return textView;
-        }
+        }*/
 
 
     }
@@ -67,7 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.text_row_item, viewGroup, false);
+                .inflate(R.layout.back, viewGroup, false);
 
         return new ViewHolder(v);
     }
@@ -82,7 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         *
         * */
         viewHolder.getImageView().setImageResource(icons[position]);
-        viewHolder.getTextView().setText(mDataSet[position]);
+       // viewHolder.getTextView().setText(mDataSet[position]);
 
     }
 
