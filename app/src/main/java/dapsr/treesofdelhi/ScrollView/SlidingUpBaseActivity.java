@@ -269,7 +269,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
                     changeSlidingState(SLIDING_STATE_MIDDLE, true);
                 }
             } else {
-                // Sliding up(back) to an anchor
+                // Sliding up(griditem) to an anchor
                 if (getAnchorYImage() < ViewHelper.getTranslationY(mInterceptionLayout)) {
                     changeSlidingState(SLIDING_STATE_MIDDLE, true);
                 } else {
@@ -286,7 +286,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
                     changeSlidingState(SLIDING_STATE_TOP, true);
                 }
             } else {
-                // Sliding down(back) to an anchor
+                // Sliding down(griditem) to an anchor
                 if (getAnchorYImage() < ViewHelper.getTranslationY(mInterceptionLayout)) {
                     changeSlidingState(SLIDING_STATE_BOTTOM, true);
                 } else {
