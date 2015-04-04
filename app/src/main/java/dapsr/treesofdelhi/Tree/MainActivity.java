@@ -168,7 +168,7 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
                                    RecyclerView parent, RecyclerView.State state) {
             outRect.left = space;
             outRect.right = space;
-            outRect.bottom = space;
+            //outRect.bottom = space;
 
             // Add top margin only for the first item to avoid double space between items
             if(parent.getChildPosition(view) == 0){
