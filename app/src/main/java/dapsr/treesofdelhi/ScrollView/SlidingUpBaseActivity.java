@@ -1,15 +1,17 @@
 package dapsr.treesofdelhi.ScrollView;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.github.ksoichiro.android.observablescrollview.ScrollUtils;
@@ -18,7 +20,7 @@ import com.github.ksoichiro.android.observablescrollview.TouchInterceptionFrameL
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
-
+import dapsr.treesofdelhi.Adapter.RecyclerViewAdapter;
 import dapsr.treesofdelhi.R;
 
 
@@ -26,6 +28,23 @@ import dapsr.treesofdelhi.R;
  * Created by rajanmaurya on 4/4/15.
  */
 public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseActivity implements ObservableScrollViewCallbacks {
+
+
+    private Toolbar toolbar;
+    private TextView tooltitle;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.LayoutManager mLayoutManager ;
+    protected RecyclerViewAdapter mAdapter;
+    protected String[] mDataset;
+    private static final int SPAN_COUNT = 2;
+    private int icon [] = {R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage };
+    Context context;
+    private enum LayoutManagerType {
+        GRID_LAYOUT_MANAGER,
+        LINEAR_LAYOUT_MANAGER
+    }
+    protected LayoutManagerType mCurrentLayoutManagerType;
+
 
     private static final String STATE_SLIDING_STATE = "slidingState";
     private static final int SLIDING_STATE_TOP = 0;
@@ -82,8 +101,73 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
+
+        initDataset();
+
+        /*
+        *
+        * subgriditem Toolbar implementation
+        * */
+        toolbar = (Toolbar) findViewById(R.id.uppertool);
+        tooltitle = (TextView) findViewById(R.id.too);
+        tooltitle.setText("Tree Of Delhi");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
+        /*
+        *
+        * RecyclerView implementation
+        *
+        * */
+
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        mRecyclerView.addItemDecoration(new SpacesItemDecoration(5));
+
+        /*
+        *
+        * RecyclerView Item Click Event
+        *
+        * */
+       // mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListner(this, this));
+
+
+        mRecyclerView.setHasFixedSize(true);
+
+        /*
+        *
+        * for Linear layout
+        *
+        * mLayoutManager = new LinearLayoutManager(this);
+        *
+        * for Grid Layout
+        *
+        * mLayoutManager = new GridLayoutManager(this,SPAN_COUNT);
+        * // SPAN_COUNT is the number of column in grid view
+        *
+        * */
+        // mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager = new GridLayoutManager(this,SPAN_COUNT);
+        mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        int scrollPosition = 0;
+        mRecyclerView.scrollToPosition(scrollPosition);
+
+        // specify an adapter (see also next example)
+        mAdapter = new RecyclerViewAdapter(mDataset , icon,context);
+        // Set CustomAdapter as the adapter for RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+
+
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+       // mToolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         setSupportActionBar(mToolbar);
         ViewHelper.setScaleY(mToolbar, 0);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -122,7 +206,12 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         mInterceptionLayout = (TouchInterceptionFrameLayout) findViewById(R.id.scroll_wrapper);
         mInterceptionLayout.setScrollInterceptionListener(mInterceptionListener);
         mTitle = (TextView) findViewById(R.id.title);
-        mTitle.setText(getTitle());
+
+        /*
+        *
+        * set lower Toolbar Title
+        * */
+        mTitle.setText("Onclick item grid title");
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         mToolbarTitle.setText(mTitle.getText());
         ViewHelper.setAlpha(mToolbarTitle, 0);
@@ -409,10 +498,14 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
             }
         }
     }
-
+/*
+*
+* Changing Toolbar color while scrolling or At bottom or At Top of Screen
+*
+* */
     private void changeHeaderBarColor(float alpha) {
-        mHeaderBar.setBackgroundColor(ScrollUtils.mixColors(mColorPrimary, Color.WHITE, alpha));
-        mTitle.setTextColor(ScrollUtils.mixColors(Color.WHITE, Color.BLACK, alpha));
+        mHeaderBar.setBackgroundColor(ScrollUtils.mixColors(mColorPrimary, mColorPrimary, alpha));
+        mTitle.setTextColor(ScrollUtils.mixColors(Color.WHITE, Color.WHITE, alpha));
         mHeaderColorChangedToBottom = (alpha == 1);
     }
 
@@ -475,4 +568,58 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
     private float getAnchorYImage() {
         return mImageView.getHeight();
     }
+
+
+    private void initDataset() {
+        mDataset = new String[icon.length];
+
+        for (int i = 0; i < icon.length; i++) {
+
+            mDataset[i] = "Tree Number " + i;
+        }
+    }
+
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+        private int space;
+
+        public SpacesItemDecoration(int space) {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view,
+                                   RecyclerView parent, RecyclerView.State state) {
+            outRect.left = space;
+            outRect.right = space;
+            //outRect.bottom = space;
+
+            // Add top margin only for the first item to avoid double space between items
+            if(parent.getChildPosition(view) == 0){
+                outRect.top = space;
+                outRect.right = 0;
+            }
+
+            if(parent.getChildPosition(view) == 1){
+                outRect.top = space;
+            }
+
+            if(parent.getChildPosition(view) == 2){
+                outRect.right = 0;
+            }
+            if(parent.getChildPosition(view) == 4){
+                outRect.right = 0;
+            }
+            if(parent.getChildPosition(view) == 6){
+                outRect.right = 0;
+            }
+            if(parent.getChildPosition(view) == 8){
+                outRect.right = 0;
+            }
+
+
+
+        }
+    }
+
+
 }

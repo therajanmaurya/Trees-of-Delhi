@@ -8,52 +8,28 @@
     Dummy background contents.
     You can replace this to map or something.
     -->
-    <LinearLayout
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#e2e2e2"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#E91E63">
+        <include
+            android:id="@+id/uppertool"
+            layout="@layout/uppertoolbar" />
 
-        </View>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="382dp"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#3F51B5" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#2196F3" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#03A9F4" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#8BC34A" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#FFEB3B" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#FFC107" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#FF9800" />
     </LinearLayout>
 
     <ImageView
@@ -67,6 +43,7 @@
         android:id="@+id/scroll_wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:clipChildren="false">
 
         <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
@@ -77,6 +54,10 @@
             android:background="@android:color/white"
             android:fillViewport="true">
 
+            <!--
+            Description of grid layout element inside below TextView
+            -->
+
             <TextView
                 android:id="@+id/container"
                 android:layout_width="match_parent"
@@ -85,7 +66,7 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:text="Trees of delhi" />
+                android:text="@string/lipsum" />
         </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
 
         <FrameLayout
