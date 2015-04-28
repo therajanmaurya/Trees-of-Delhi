@@ -30,11 +30,66 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
     protected RecyclerViewAdapter mAdapter;
     protected String[] mDataset;
     private static final int SPAN_COUNT = 2;
-    private int icon [] = {R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage };
+
+
+    /*
+    *
+    * Basic TenType Leaves
+    *
+    * */
+    private int icon [] = {R.drawable.tree1,R.drawable.tree2,R.drawable.tree3,R.drawable.tree4,R.drawable.tree5,R.drawable.tree6,R.drawable.tree7,R.drawable.tree8,R.drawable.tree9,R.drawable.tree10 };
 
     @Override
     public void onItemClick(View childView, int position) {
 
+        switch (position) {
+            case 0:
+
+
+                break;
+            case 1:
+
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+
+                break;
+
+            case 5:
+
+                break;
+
+            case 6:
+
+                break;
+
+            case 7:
+
+                break;
+
+            case 8:
+
+                break;
+
+            case 9:
+
+                break;
+
+            case 10:
+
+                break;
+
+
+        }
         Intent intent = new Intent(this,SlidingUpScrollViewActivity.class);
         startActivity(intent);
 

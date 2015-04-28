@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.github.ksoichiro.android.observablescrollview.ScrollUtils;
@@ -20,6 +21,7 @@ import com.github.ksoichiro.android.observablescrollview.TouchInterceptionFrameL
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
+
 import dapsr.treesofdelhi.Adapter.RecyclerViewAdapter;
 import dapsr.treesofdelhi.R;
 
@@ -33,16 +35,26 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
     private Toolbar toolbar;
     private TextView tooltitle;
     private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager ;
+    private RecyclerView.LayoutManager mLayoutManager;
     protected RecyclerViewAdapter mAdapter;
     protected String[] mDataset;
     private static final int SPAN_COUNT = 2;
-    private int icon [] = {R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage,R.drawable.gridimage };
+
+    /*
+    *
+    * Types of leaves
+    *
+    * */
+    private int icon[] = {R.drawable.tree1, R.drawable.tree2, R.drawable.tree3, R.drawable.tree4,   R.drawable.tree5,R.drawable.tree6, R.drawable.tree7, R.drawable.tree8, R.drawable.tree9, R.drawable.tree10};
     Context context;
+
+
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
         LINEAR_LAYOUT_MANAGER
     }
+
+
     protected LayoutManagerType mCurrentLayoutManagerType;
 
 
@@ -102,7 +114,6 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         setContentView(getLayoutResId());
 
 
-
         initDataset();
 
         /*
@@ -134,7 +145,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         * RecyclerView Item Click Event
         *
         * */
-       // mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListner(this, this));
+        // mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListner(this, this));
 
 
         mRecyclerView.setHasFixedSize(true);
@@ -152,7 +163,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         *
         * */
         // mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager = new GridLayoutManager(this,SPAN_COUNT);
+        mLayoutManager = new GridLayoutManager(this, SPAN_COUNT);
         mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
         mRecyclerView.setLayoutManager(mLayoutManager);
 
@@ -160,14 +171,13 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         mRecyclerView.scrollToPosition(scrollPosition);
 
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerViewAdapter(mDataset , icon,context);
+        mAdapter = new RecyclerViewAdapter(mDataset, icon, context);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
 
-
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-       // mToolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        // mToolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         setSupportActionBar(mToolbar);
         ViewHelper.setScaleY(mToolbar, 0);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -498,11 +508,12 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
             }
         }
     }
-/*
-*
-* Changing Toolbar color while scrolling or At bottom or At Top of Screen
-*
-* */
+
+    /*
+    *
+    * Changing Toolbar color while scrolling or At bottom or At Top of Screen
+    *
+    * */
     private void changeHeaderBarColor(float alpha) {
         mHeaderBar.setBackgroundColor(ScrollUtils.mixColors(mColorPrimary, mColorPrimary, alpha));
         mTitle.setTextColor(ScrollUtils.mixColors(Color.WHITE, Color.WHITE, alpha));
@@ -594,28 +605,27 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
             //outRect.bottom = space;
 
             // Add top margin only for the first item to avoid double space between items
-            if(parent.getChildPosition(view) == 0){
+            if (parent.getChildPosition(view) == 0) {
                 outRect.top = space;
                 outRect.right = 0;
             }
 
-            if(parent.getChildPosition(view) == 1){
+            if (parent.getChildPosition(view) == 1) {
                 outRect.top = space;
             }
 
-            if(parent.getChildPosition(view) == 2){
+            if (parent.getChildPosition(view) == 2) {
                 outRect.right = 0;
             }
-            if(parent.getChildPosition(view) == 4){
+            if (parent.getChildPosition(view) == 4) {
                 outRect.right = 0;
             }
-            if(parent.getChildPosition(view) == 6){
+            if (parent.getChildPosition(view) == 6) {
                 outRect.right = 0;
             }
-            if(parent.getChildPosition(view) == 8){
+            if (parent.getChildPosition(view) == 8) {
                 outRect.right = 0;
             }
-
 
 
         }
