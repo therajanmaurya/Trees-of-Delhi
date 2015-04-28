@@ -4,15 +4,11 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,7 +45,7 @@ public abstract class Palm_like_leaves<S extends Scrollable> extends BaseActivit
         * Types of leaves
         *
         * */
-        private int icon[] = {R.drawable.tree1, R.drawable.tree2, R.drawable.tree3, R.drawable.tree4,   R.drawable.tree5,R.drawable.tree6, R.drawable.tree7, R.drawable.tree8, R.drawable.tree9, R.drawable.tree10};
+        private int icon[] = {R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7,   R.drawable.tree7,R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7};
         Context context;
 
 

@@ -45,7 +45,7 @@ public abstract class Gulmohur_like_leaves<S extends Scrollable> extends BaseAct
         * Types of leaves
         *
         * */
-        private int icon[] = {R.drawable.tree1, R.drawable.tree2, R.drawable.tree3, R.drawable.tree4,   R.drawable.tree5,R.drawable.tree6, R.drawable.tree7, R.drawable.tree8, R.drawable.tree9, R.drawable.tree10};
+        private int icon[] = {R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4,   R.drawable.tree4,R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4};
         Context context;
 
 
