@@ -26,6 +26,47 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SlidingUpActiviity.Bael_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Chinar_like_leaves_Sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Frangipani_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Gulmohur_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.ImLI_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Jamun_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Palm_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Peepal_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Pine_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SlidingUpActiviity.Semal_like_leaves_sliding"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

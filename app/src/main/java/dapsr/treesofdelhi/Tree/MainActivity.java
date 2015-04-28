@@ -16,7 +16,16 @@ import android.widget.Toast;
 import dapsr.treesofdelhi.Adapter.RecyclerItemClickListner;
 import dapsr.treesofdelhi.Adapter.RecyclerViewAdapter;
 import dapsr.treesofdelhi.R;
-import dapsr.treesofdelhi.ScrollView.SlidingUpScrollViewActivity;
+import dapsr.treesofdelhi.SlidingUpActiviity.Bael_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Chinar_like_leaves_Sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Frangipani_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Gulmohur_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.ImLI_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Jamun_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Palm_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Peepal_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Pine_like_leaves_sliding;
+import dapsr.treesofdelhi.SlidingUpActiviity.Semal_like_leaves_sliding;
 
 
 /**
@@ -46,54 +55,100 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
             case 0:
 
 
+                Intent intent = new Intent(this,Bael_like_leaves_sliding.class);
+                startActivity(intent);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
+
+
                 break;
             case 1:
 
+                Intent intent1 = new Intent(this,Chinar_like_leaves_Sliding.class);
+                startActivity(intent1);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
 
                 break;
 
             case 2:
 
+                Intent intent2 = new Intent(this,Frangipani_like_leaves_sliding.class);
+                startActivity(intent2);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
+
                 break;
 
             case 3:
+
+                Intent intent3 = new Intent(this,Gulmohur_like_leaves_sliding.class);
+                startActivity(intent3);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
 
                 break;
 
             case 4:
 
+                Intent intent4 = new Intent(this,ImLI_like_leaves_sliding.class);
+                startActivity(intent4);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
+
+
                 break;
 
             case 5:
+
+
+                Intent intent5 = new Intent(this,Jamun_like_leaves_sliding.class);
+                startActivity(intent5);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
 
                 break;
 
             case 6:
 
+                Intent intent6 = new Intent(this,Palm_like_leaves_sliding.class);
+                startActivity(intent6);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
+
                 break;
 
             case 7:
+
+                Intent intent7 = new Intent(this,Peepal_like_leaves_sliding.class);
+                startActivity(intent7);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
 
                 break;
 
             case 8:
 
+                Intent intent8 = new Intent(this,Pine_like_leaves_sliding.class);
+                startActivity(intent8);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
+
                 break;
 
             case 9:
 
+                Intent intent9 = new Intent(this,Semal_like_leaves_sliding.class);
+                startActivity(intent9);
+
+                Toast.makeText(this, "Item Number " + position, Toast.LENGTH_SHORT).show();
+
                 break;
 
-            case 10:
-
-                break;
 
 
         }
-        Intent intent = new Intent(this,SlidingUpScrollViewActivity.class);
-        startActivity(intent);
 
-        Toast.makeText(this,"Item Number " + position,Toast.LENGTH_SHORT).show();
 
 
     }

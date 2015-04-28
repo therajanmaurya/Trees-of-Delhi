@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.github.ksoichiro.android.observablescrollview.ScrollUtils;
@@ -21,7 +20,6 @@ import com.github.ksoichiro.android.observablescrollview.TouchInterceptionFrameL
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
-
 import dapsr.treesofdelhi.Adapter.RecyclerViewAdapter;
 import dapsr.treesofdelhi.R;
 
@@ -368,7 +366,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
                     changeSlidingState(SLIDING_STATE_MIDDLE, true);
                 }
             } else {
-                // Sliding up(griditem) to an anchor
+                // Sliding up(recyccleview_griditem) to an anchor
                 if (getAnchorYImage() < ViewHelper.getTranslationY(mInterceptionLayout)) {
                     changeSlidingState(SLIDING_STATE_MIDDLE, true);
                 } else {
@@ -385,7 +383,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
                     changeSlidingState(SLIDING_STATE_TOP, true);
                 }
             } else {
-                // Sliding down(griditem) to an anchor
+                // Sliding down(recyccleview_griditem) to an anchor
                 if (getAnchorYImage() < ViewHelper.getTranslationY(mInterceptionLayout)) {
                     changeSlidingState(SLIDING_STATE_BOTTOM, true);
                 } else {
