@@ -1,6 +1,7 @@
 package dapsr.treesofdelhi.ScrollView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.github.ksoichiro.android.observablescrollview.ScrollUtils;
@@ -20,6 +22,8 @@ import com.github.ksoichiro.android.observablescrollview.TouchInterceptionFrameL
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
+
+import dapsr.treesofdelhi.Adapter.RecyclerItemClickListner;
 import dapsr.treesofdelhi.Adapter.RecyclerViewAdapter;
 import dapsr.treesofdelhi.R;
 
@@ -27,7 +31,7 @@ import dapsr.treesofdelhi.R;
 /**
  * Created by rajanmaurya on 4/4/15.
  */
-public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseActivity implements ObservableScrollViewCallbacks {
+public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseActivity  implements ObservableScrollViewCallbacks , RecyclerItemClickListner.OnItemClickListener {
 
 
     private Toolbar toolbar;
@@ -45,6 +49,18 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
     * */
     private int icon[] = {R.drawable.tree1, R.drawable.tree2, R.drawable.tree3, R.drawable.tree4,   R.drawable.tree5,R.drawable.tree6, R.drawable.tree7, R.drawable.tree8, R.drawable.tree9, R.drawable.tree10};
     Context context;
+
+    @Override
+    public void onItemClick(View childView, int position) {
+
+        Toast.makeText(this, "Sub Leaf is clicked" , Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
+    }
 
 
     private enum LayoutManagerType {
@@ -111,6 +127,10 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
 
+        Intent intent = getIntent();
+        int LeafType = intent.getIntExtra("LeafType", 0);
+
+        Toast.makeText(this, "Leaf is clicked " + LeafType, Toast.LENGTH_SHORT).show();
 
         initDataset();
 
@@ -143,7 +163,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable> extends BaseAc
         * RecyclerView Item Click Event
         *
         * */
-        // mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListner(this, this));
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListner(this, this));
 
 
         mRecyclerView.setHasFixedSize(true);

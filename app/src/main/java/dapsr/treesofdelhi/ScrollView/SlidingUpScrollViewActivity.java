@@ -1,5 +1,7 @@
 package dapsr.treesofdelhi.ScrollView;
 
+import android.view.View;
+
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
@@ -38,6 +40,19 @@ public class SlidingUpScrollViewActivity extends SlidingUpBaseActivity<Observabl
 
     @Override
     public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+
+    }
+
+    @Override
+    public void onItemClick(View childView, int position) {
+
+
+       // Toast.makeText(this, "Sub Leaf is clicked", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
 
     }
 }
