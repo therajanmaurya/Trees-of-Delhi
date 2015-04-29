@@ -41,6 +41,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
     protected RecyclerViewAdapter mAdapter;
     protected String[] mDataset;
     private static final int SPAN_COUNT = 2;
+    public RecyclerItemClickListner.OnItemClickListener click ;
 
     /*
     *
@@ -53,7 +54,8 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
     @Override
     public void onItemClick(View childView, int position) {
 
-        Toast.makeText(this, "Sub Leaf is clicked" , Toast.LENGTH_SHORT).show();
+        showFab(true);
+        Toast.makeText(this, "Sub Leaf is clicked   " + position , Toast.LENGTH_SHORT).show();
 
     }
 
