@@ -54,7 +54,8 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
     @Override
     public void onItemClick(View childView, int position) {
 
-        showFab(true);
+
+        changeSlidingState(SLIDING_STATE_MIDDLE, true);
         Toast.makeText(this, "Sub Leaf is clicked   " + position , Toast.LENGTH_SHORT).show();
 
     }
@@ -346,7 +347,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         }
     };
 
-    private void changeSlidingState(final int slidingState, boolean animated) {
+    public void changeSlidingState(final int slidingState, boolean animated) {
         mSlidingState = slidingState;
         float translationY = 0;
         switch (slidingState) {
