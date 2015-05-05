@@ -51,7 +51,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
     * Types of leaves
     *
     * */
-    private int icon[] = {R.drawable.tree1, R.drawable.tree2, R.drawable.tree3, R.drawable.tree4,   R.drawable.tree5,R.drawable.tree6, R.drawable.tree7, R.drawable.tree8, R.drawable.tree9, R.drawable.tree10};
+    private int icon[]  ;
     Context context;
 
     @Override
@@ -142,6 +142,8 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         * */
         Intent intent = getIntent();
         int LeafType = intent.getIntExtra("LeafType", 0);
+
+        icon = Imageloding(LeafType);
 
         Toast.makeText(this, "Leaf is clicked " + LeafType, Toast.LENGTH_SHORT).show();
 
@@ -668,6 +670,68 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
 
 
         }
+    }
+
+
+    public int[] Imageloding(int leafnumber){
+
+        int subleaves[] = new int[0];
+        switch (leafnumber){
+
+            case 0:
+                subleaves = new int[]{R.drawable.tree1, R.drawable.tree1, R.drawable.tree1, R.drawable.tree1,   R.drawable.tree1,R.drawable.tree1, R.drawable.tree1, R.drawable.tree1, R.drawable.tree1, R.drawable.tree1};
+
+                break;
+            case 1:
+
+                subleaves = new int[]{R.drawable.tree2, R.drawable.tree2, R.drawable.tree2, R.drawable.tree2,   R.drawable.tree2,R.drawable.tree2, R.drawable.tree2, R.drawable.tree2, R.drawable.tree2, R.drawable.tree2};
+
+                break;
+            case 2:
+
+                subleaves = new int[]{R.drawable.tree3, R.drawable.tree3, R.drawable.tree3, R.drawable.tree3,   R.drawable.tree3,R.drawable.tree3, R.drawable.tree3, R.drawable.tree3, R.drawable.tree3, R.drawable.tree3};
+
+                break;
+            case 3:
+
+                subleaves = new int[]{R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4,   R.drawable.tree4,R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4};
+
+                break;
+            case 4:
+
+                subleaves = new int[]{R.drawable.tree5, R.drawable.tree5, R.drawable.tree5, R.drawable.tree5,   R.drawable.tree5,R.drawable.tree5, R.drawable.tree5, R.drawable.tree5, R.drawable.tree5, R.drawable.tree5};
+
+                break;
+            case 5:
+
+
+                subleaves = new int[]{R.drawable.tree6, R.drawable.tree6, R.drawable.tree6, R.drawable.tree6,   R.drawable.tree6,R.drawable.tree6, R.drawable.tree6, R.drawable.tree6, R.drawable.tree6, R.drawable.tree6};
+
+                break;
+            case 6:
+
+                subleaves = new int[]{R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7,   R.drawable.tree7,R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7};
+
+                break;
+            case 7:
+
+                subleaves = new int[]{R.drawable.tree8, R.drawable.tree8, R.drawable.tree8, R.drawable.tree8,   R.drawable.tree8,R.drawable.tree8, R.drawable.tree8, R.drawable.tree8, R.drawable.tree8, R.drawable.tree8};
+
+                break;
+            case 8:
+
+                subleaves = new int[]{R.drawable.tree9, R.drawable.tree9, R.drawable.tree9, R.drawable.tree9,   R.drawable.tree9,R.drawable.tree9, R.drawable.tree9, R.drawable.tree9, R.drawable.tree9, R.drawable.tree9};
+
+                break;
+            case 9:
+
+                subleaves = new int[]{R.drawable.tree10, R.drawable.tree10, R.drawable.tree10, R.drawable.tree10,   R.drawable.tree10,R.drawable.tree10, R.drawable.tree10, R.drawable.tree10, R.drawable.tree10, R.drawable.tree10};
+
+                break;
+
+
+        }
+        return subleaves;
     }
 
 
