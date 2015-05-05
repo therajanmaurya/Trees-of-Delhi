@@ -11,8 +11,7 @@ import dapsr.treesofdelhi.R;
  */
 public class SlidingUpScrollViewActivity extends SlidingUpBaseActivity<ObservableScrollView> implements ObservableScrollViewCallbacks {
 
-
-
+    private static final int SLIDING_STATE_BOTTOM = 2;
 
     @Override
     protected int getLayoutResId() {
@@ -24,6 +23,20 @@ public class SlidingUpScrollViewActivity extends SlidingUpBaseActivity<Observabl
         ObservableScrollView scrollView = (ObservableScrollView) findViewById(R.id.scroll);
         scrollView.setScrollViewCallbacks(this);
         return scrollView;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+
+        if (SlidingUpBaseActivity.getActionbarStatus == 7){
+            finish();
+        }else if(SlidingUpBaseActivity.getActionbarStatus == 6 ){
+            changeSlidingState(SLIDING_STATE_BOTTOM, true);
+        }else if(SlidingUpBaseActivity.getActionbarStatus == 5){
+            changeSlidingState(SLIDING_STATE_BOTTOM, true);
+        }
+
     }
 
     @Override

@@ -43,6 +43,9 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
     private static final int SPAN_COUNT = 2;
     public RecyclerItemClickListner.OnItemClickListener click ;
 
+    public static int getActionbarStatus;
+
+
     /*
     *
     * Types of leaves
@@ -130,6 +133,13 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
 
+
+
+        /*
+        *
+        * Getting the main leaf type (in which category it exits)
+        *
+        * */
         Intent intent = getIntent();
         int LeafType = intent.getIntExtra("LeafType", 0);
 
@@ -353,12 +363,16 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         switch (slidingState) {
             case SLIDING_STATE_TOP:
                 translationY = 0;
+                getActionbarStatus = 5;
                 break;
             case SLIDING_STATE_MIDDLE:
                 translationY = getAnchorYImage();
+                getActionbarStatus = 6;
                 break;
             case SLIDING_STATE_BOTTOM:
                 translationY = getAnchorYBottom();
+                getActionbarStatus = 7;
+
                 break;
         }
         if (animated) {
@@ -610,6 +624,10 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
             mDataset[i] = "Tree Number " + i;
         }
     }
+
+
+
+
 
     public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
         private int space;
