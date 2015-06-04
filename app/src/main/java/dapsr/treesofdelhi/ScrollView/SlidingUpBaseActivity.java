@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +61,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
 
         changeSlidingState(SLIDING_STATE_MIDDLE, true);
         Toast.makeText(this, "Sub Leaf is clicked   " + position , Toast.LENGTH_SHORT).show();
+        mImageView.setImageResource(icon[position]);
 
     }
 
@@ -89,7 +91,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
     private View mHeaderFlexibleSpace;
     private TextView mTitle;
     private TextView mToolbarTitle;
-    private View mImageView;
+    private ImageView mImageView;
     private View mFab;
     private Toolbar mToolbar;
     private S mScrollable;
@@ -187,15 +189,15 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         *
         * for Linear layout
         *
-        * mLayoutManager = new LinearLayoutManager(this);
+        * mLayoutManager = saptaaa LinearLayoutManager(this);
         *
         * for Grid Layout
         *
-        * mLayoutManager = new GridLayoutManager(this,SPAN_COUNT);
+        * mLayoutManager = saptaaa GridLayoutManager(this,SPAN_COUNT);
         * // SPAN_COUNT is the number of column in grid view
         *
         * */
-        // mLayoutManager = new LinearLayoutManager(this);
+        // mLayoutManager = saptaaa LinearLayoutManager(this);
         mLayoutManager = new GridLayoutManager(this, SPAN_COUNT);
         mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -233,7 +235,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         mHeaderBar = findViewById(R.id.header_bar);
         mHeaderOverlay = findViewById(R.id.header_overlay);
         mHeaderFlexibleSpace = findViewById(R.id.header_flexible_space);
-        mImageView = findViewById(R.id.image);
+        mImageView = (ImageView)findViewById(R.id.image);
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -679,53 +681,52 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         switch (leafnumber){
 
             case 0:
-                subleaves = new int[]{R.drawable.tree1, R.drawable.tree1, R.drawable.tree1, R.drawable.tree1,   R.drawable.tree1,R.drawable.tree1, R.drawable.tree1, R.drawable.tree1, R.drawable.tree1, R.drawable.tree1};
+                subleaves = new int[]{R.drawable.saptaaa, R.drawable.saptaaa, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 1:
 
-                subleaves = new int[]{R.drawable.tree2, R.drawable.tree2, R.drawable.tree2, R.drawable.tree2,   R.drawable.tree2,R.drawable.tree2, R.drawable.tree2, R.drawable.tree2, R.drawable.tree2, R.drawable.tree2};
-
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
                 break;
             case 2:
 
-                subleaves = new int[]{R.drawable.tree3, R.drawable.tree3, R.drawable.tree3, R.drawable.tree3,   R.drawable.tree3,R.drawable.tree3, R.drawable.tree3, R.drawable.tree3, R.drawable.tree3, R.drawable.tree3};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 3:
 
-                subleaves = new int[]{R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4,   R.drawable.tree4,R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4, R.drawable.tree4};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 4:
 
-                subleaves = new int[]{R.drawable.tree5, R.drawable.tree5, R.drawable.tree5, R.drawable.tree5,   R.drawable.tree5,R.drawable.tree5, R.drawable.tree5, R.drawable.tree5, R.drawable.tree5, R.drawable.tree5};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 5:
 
 
-                subleaves = new int[]{R.drawable.tree6, R.drawable.tree6, R.drawable.tree6, R.drawable.tree6,   R.drawable.tree6,R.drawable.tree6, R.drawable.tree6, R.drawable.tree6, R.drawable.tree6, R.drawable.tree6};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 6:
 
-                subleaves = new int[]{R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7,   R.drawable.tree7,R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7, R.drawable.tree7};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 7:
 
-                subleaves = new int[]{R.drawable.tree8, R.drawable.tree8, R.drawable.tree8, R.drawable.tree8,   R.drawable.tree8,R.drawable.tree8, R.drawable.tree8, R.drawable.tree8, R.drawable.tree8, R.drawable.tree8};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 8:
 
-                subleaves = new int[]{R.drawable.tree9, R.drawable.tree9, R.drawable.tree9, R.drawable.tree9,   R.drawable.tree9,R.drawable.tree9, R.drawable.tree9, R.drawable.tree9, R.drawable.tree9, R.drawable.tree9};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
             case 9:
 
-                subleaves = new int[]{R.drawable.tree10, R.drawable.tree10, R.drawable.tree10, R.drawable.tree10,   R.drawable.tree10,R.drawable.tree10, R.drawable.tree10, R.drawable.tree10, R.drawable.tree10, R.drawable.tree10};
+                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
 
                 break;
 

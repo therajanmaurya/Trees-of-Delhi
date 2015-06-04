@@ -64,7 +64,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view.
+        // Create a saptaaa view.
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.recyccleview_griditem, viewGroup, false);
 

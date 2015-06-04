@@ -41,6 +41,10 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
     @Override
     public void onItemClick(View childView, int position) {
 
+        /*
+        *
+        * Sending Intent To subimages Activity
+        * */
         Intent intent = new Intent(this,SlidingUpScrollViewActivity.class);
         intent.putExtra("LeafType", position);
         startActivity(intent);
@@ -104,15 +108,15 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
         *
         * for Linear layout
         *
-        * mLayoutManager = new LinearLayoutManager(this);
+        * mLayoutManager = saptaaa LinearLayoutManager(this);
         *
         * for Grid Layout
         *
-        * mLayoutManager = new GridLayoutManager(this,SPAN_COUNT);
+        * mLayoutManager = saptaaa GridLayoutManager(this,SPAN_COUNT);
         * // SPAN_COUNT is the number of column in grid view
         *
         * */
-        // mLayoutManager = new LinearLayoutManager(this);
+        // mLayoutManager = saptaaa LinearLayoutManager(this);
         mLayoutManager = new GridLayoutManager(this,SPAN_COUNT);
         mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
         mRecyclerView.setLayoutManager(mLayoutManager);
