@@ -173,7 +173,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        mRecyclerView.addItemDecoration(new SpacesItemDecoration(5));
+        mRecyclerView.addItemDecoration(new SpacesItemDecoration(15));
 
         /*
         *
@@ -645,7 +645,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
                                    RecyclerView parent, RecyclerView.State state) {
             outRect.left = space;
             outRect.right = space;
-            //outRect.bottom = space;
+            outRect.bottom = space;
 
             // Add top margin only for the first item to avoid double space between items
             if (parent.getChildPosition(view) == 0) {
@@ -669,6 +669,19 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
             if (parent.getChildPosition(view) == 8) {
                 outRect.right = 0;
             }
+            if (parent.getChildPosition(view) == 10) {
+                outRect.right = 0;
+            }
+            if (parent.getChildPosition(view) == 12) {
+                outRect.right = 0;
+            }
+            if (parent.getChildPosition(view) == 14) {
+                outRect.right = 0;
+            }
+            if (parent.getChildPosition(view) == 16) {
+                outRect.right = 0;
+            }
+
 
 
         }
@@ -681,7 +694,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         switch (leafnumber){
 
             case 0:
-                subleaves = new int[]{R.drawable.saptaaa, R.drawable.saptaaa, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves = new int[]{R.drawable.saptaaa, R.drawable.saptaaa, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.wildalmond,R.drawable.wildalmond};
 
                 break;
             case 1:
