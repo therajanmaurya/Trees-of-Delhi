@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import dapsr.treesofdelhi.R;
 
@@ -18,6 +19,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private String[] mDataSet;
     private int icons[];
     private Context con;
+    private String [] ImageName;
 
 
     /**
@@ -25,7 +27,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
-       // private final TextView textView;
+        private final TextView imagename;
 
 
         public ViewHolder(View v) {
@@ -33,7 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
             imageView = (ImageView) v.findViewById(R.id.image);
-           // textView  = (TextView) v.findViewById(R.id.textView2);
+            imagename  = (TextView) v.findViewById(R.id.name);
 
         }
 
@@ -41,9 +43,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             return imageView;
         }
 
-        /*public TextView getTextView(){
-            return textView;
-        }*/
+        public TextView getTextView(){
+            return imagename;
+        }
 
 
     }
@@ -51,14 +53,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     /**
      * Initialize the dataset of the Adapter.
-     *  @param dataSet String[] containing the data to populate views to be used by RecyclerView.
+     * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      * @param icon
      * @param context
+     * @param tenTypeLeaves
      */
-    public RecyclerViewAdapter(String[] dataSet, int[] icon, Context context) {
+    public RecyclerViewAdapter(String[] dataSet, int[] icon, Context context, String[] tenTypeLeaves) {
         mDataSet = dataSet;
         icons = icon;
         this.con = context;
+        this.ImageName = tenTypeLeaves;
     }
 
 
@@ -81,7 +85,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         *
         * */
         viewHolder.getImageView().setImageResource(icons[position]);
-       // viewHolder.getTextView().setText(mDataSet[position]);
+        viewHolder.getTextView().setText(ImageName[position]);
 
     }
 

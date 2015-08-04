@@ -29,6 +29,7 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
     protected RecyclerViewAdapter mAdapter;
     protected String[] mDataset;
     private static final int SPAN_COUNT = 2;
+    private String [] TenTypeLeaves;
 
 
     /*
@@ -36,7 +37,8 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
     * Basic TenType Leaves
     *
     * */
-    private int icon [] = {R.drawable.tree1,R.drawable.tree2,R.drawable.tree3,R.drawable.tree4,R.drawable.tree5,R.drawable.tree6,R.drawable.tree7,R.drawable.tree8,R.drawable.tree9,R.drawable.tree10 };
+    private int icon [] = {R.drawable.baellike,R.drawable.semallike,R.drawable.imlilike,R.drawable.gulmohurlike,R.drawable.palmlike,R.drawable.jamunlike,R.drawable.peepallike,R.drawable.frangipanilike,R.drawable.chinarlike,R.drawable.pinelike
+    };
 
     @Override
     public void onItemClick(View childView, int position) {
@@ -74,6 +76,7 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
 
         initDataset();
 
+        TenTypeLeaves = getResources().getStringArray(R.array.tentypeLeaves);
         /*
         *
         * Toolbar implementation
@@ -92,7 +95,8 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        mRecyclerView.addItemDecoration(new SpacesItemDecoration(15));
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_card);
+        mRecyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
         /*
         *
@@ -125,7 +129,7 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
         mRecyclerView.scrollToPosition(scrollPosition);
 
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerViewAdapter(mDataset , icon,context);
+        mAdapter = new RecyclerViewAdapter(mDataset , icon,context ,TenTypeLeaves);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
@@ -179,28 +183,22 @@ public class MainActivity extends ActionBarActivity implements RecyclerItemClick
             outRect.right = space;
             outRect.bottom = space;
 
+            int  parentview = parent.getChildPosition(view);
             // Add top margin only for the first item to avoid double space between items
-            if(parent.getChildPosition(view) == 0){
+            if(parentview == 0){
                 outRect.top = space;
-                outRect.right = 0;
+                outRect.right =  (int)getResources().getDimension(R.dimen.RightSpace);
             }
 
-            if(parent.getChildPosition(view) == 1){
+            if(parentview == 1){
                 outRect.top = space;
             }
 
-            if(parent.getChildPosition(view) == 2){
-                outRect.right = 0;
+            if(parentview % 2 == 0){
+                outRect.right = (int)getResources().getDimension(R.dimen.RightSpace);
             }
-            if(parent.getChildPosition(view) == 4){
-                outRect.right = 0;
-            }
-            if(parent.getChildPosition(view) == 6){
-                outRect.right = 0;
-            }
-            if(parent.getChildPosition(view) == 8){
-                outRect.right = 0;
-            }
+
+
 
 
 

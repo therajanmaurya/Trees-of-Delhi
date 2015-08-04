@@ -60,9 +60,10 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
 
 
         changeSlidingState(SLIDING_STATE_MIDDLE, true);
-        Toast.makeText(this, "Sub Leaf is clicked   " + position , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Sub Leaf is clicked   " + position , Toast.LENGTH_SHORT).show();
         mImageView.setImageResource(icon[position]);
-
+        mContainer.setText("Description of Leaves");
+        mTitle.setText(TenTypeLeaves[position]);
     }
 
     @Override
@@ -85,12 +86,14 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
     private static final int SLIDING_STATE_MIDDLE = 1;
     private static final int SLIDING_STATE_BOTTOM = 2;
 
+    private String [] TenTypeLeaves;
     private View mHeader;
     private View mHeaderBar;
     private View mHeaderOverlay;
     private View mHeaderFlexibleSpace;
     private TextView mTitle;
     private TextView mToolbarTitle;
+    private TextView mContainer;
     private ImageView mImageView;
     private View mFab;
     private Toolbar mToolbar;
@@ -147,16 +150,17 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
 
         icon = Imageloding(LeafType);
 
-        Toast.makeText(this, "Leaf is clicked " + LeafType, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Leaf is clicked " + LeafType, Toast.LENGTH_SHORT).show();
 
         initDataset();
-
+        TenTypeLeaves = getResources().getStringArray(R.array.jamun);
         /*
         *
         * subgriditem Toolbar implementation
         * */
         toolbar = (Toolbar) findViewById(R.id.uppertool);
         tooltitle = (TextView) findViewById(R.id.too);
+        mContainer = (TextView) findViewById(R.id.container);
         tooltitle.setText("Tree Of Delhi");
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -173,7 +177,8 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        mRecyclerView.addItemDecoration(new SpacesItemDecoration(15));
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_card);
+        mRecyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
         /*
         *
@@ -206,7 +211,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         mRecyclerView.scrollToPosition(scrollPosition);
 
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerViewAdapter(mDataset, icon, context);
+        mAdapter = new RecyclerViewAdapter(mDataset, icon, context, TenTypeLeaves);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
@@ -256,7 +261,7 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         *
         * set lower Toolbar Title
         * */
-        mTitle.setText("Onclick item grid title");
+        mTitle.setText("");
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         mToolbarTitle.setText(mTitle.getText());
         ViewHelper.setAlpha(mToolbarTitle, 0);
@@ -647,41 +652,20 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
             outRect.right = space;
             outRect.bottom = space;
 
+            int  parentview = parent.getChildPosition(view);
             // Add top margin only for the first item to avoid double space between items
-            if (parent.getChildPosition(view) == 0) {
+            if(parentview == 0){
                 outRect.top = space;
                 outRect.right = 0;
             }
 
-            if (parent.getChildPosition(view) == 1) {
+            if(parentview == 1){
                 outRect.top = space;
             }
 
-            if (parent.getChildPosition(view) == 2) {
+            if(parentview % 2 == 0){
                 outRect.right = 0;
             }
-            if (parent.getChildPosition(view) == 4) {
-                outRect.right = 0;
-            }
-            if (parent.getChildPosition(view) == 6) {
-                outRect.right = 0;
-            }
-            if (parent.getChildPosition(view) == 8) {
-                outRect.right = 0;
-            }
-            if (parent.getChildPosition(view) == 10) {
-                outRect.right = 0;
-            }
-            if (parent.getChildPosition(view) == 12) {
-                outRect.right = 0;
-            }
-            if (parent.getChildPosition(view) == 14) {
-                outRect.right = 0;
-            }
-            if (parent.getChildPosition(view) == 16) {
-                outRect.right = 0;
-            }
-
 
 
         }
@@ -694,52 +678,52 @@ public abstract class SlidingUpBaseActivity<S extends Scrollable>  extends BaseA
         switch (leafnumber){
 
             case 0:
-                subleaves = new int[]{R.drawable.saptaaa, R.drawable.saptaaa, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.wildalmond,R.drawable.wildalmond};
+                subleaves = new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 1:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves = new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
                 break;
             case 2:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves =  new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 3:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves =  new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 4:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves =  new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 5:
 
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves =  new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 6:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves = new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 7:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves = new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 8:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves =  new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
             case 9:
 
-                subleaves = new int[]{R.drawable.babob, R.drawable.babob2, R.drawable.brush, R.drawable.desert,   R.drawable.floss,R.drawable.kapok, R.drawable.pinktrumpet, R.drawable.sapta, R.drawable.semel, R.drawable.silk,R.drawable.trumpet,R.drawable.wildalmond};
+                subleaves =  new int[]{R.drawable.arjun, R.drawable.arnatto, R.drawable.chakwa, R.drawable.chaulmugra,   R.drawable.empress,R.drawable.gab, R.drawable.gamhar, R.drawable.haldu, R.drawable.indian_tuilp, R.drawable.kamala,R.drawable.mango,R.drawable.peelu,R.drawable.philippine_tung,R.drawable.tumri};
 
                 break;
 
